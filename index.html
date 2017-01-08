@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta lang="UTF-8">
-	<title>Coding Quickie: Stargaze</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="iashris">
+	<title>Manali Trance</title>
 </head>
 <link href="https://fonts.googleapis.com/css?family=Rozha+One" rel="stylesheet">
 <style type="text/css">
@@ -37,7 +39,7 @@
 		vertical-align: middle;
 		margin: auto;
 		color:white;
-		font-family: 'Lato',Helvetica;
+		font-family: 'Rozha One',Helvetica;
 		text-align: center;
 		top:45%;
 		
@@ -55,7 +57,7 @@
 
 	}
 </style>
-<script type="text/javascript" src="p5.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.min.js"></script>
 <body>
 
 	<div id="content"></div>
@@ -71,7 +73,7 @@
 	</div>
 </body>
 <script type="text/javascript">
-	setTimeout(hiide,30);
+	setTimeout(hiide,3000);
 	var backa=255;
 	function hiide(){
 		document.getElementById('cover').style.opacity="0";
@@ -212,14 +214,15 @@ function draw(){
 		foo[i].show();
 		foo[i].update();
 	}
+if(frameCount<600){
+ fill('rgba(42,186,217,0.8)');
+ text('मनाली ट्रांस', width/2-fd, height/2);
+ fill('rgba(206,29,39,0.8)');
+ text('मनाली ट्रांस', width/2+fd, height/2);
 
- // fill('rgba(42,186,217,0.8)');
- // text('ASHRIS', width/2-fd, height/2);
- // fill('rgba(206,29,39,0.8)');
- // text('ASHRIS', width/2+fd, height/2);
-
- //  fill('rgba(0,0,0,0.8)');
- // text('ASHRIS', width/2, height/2);
+  fill('rgba(0,0,0,0.8)');
+ text('मनाली ट्रांस', width/2, height/2);
+}
 
 }
 
