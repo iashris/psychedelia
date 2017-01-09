@@ -7,7 +7,7 @@ yola=['rgba(0,0,0,0.25)','rgba(0,0,0,0.15)','rgba(0,0,0,0.15)','rgba(0,0,0,0.1)'
 	files=['Nucleya - BASS Rani - Aaja','Coldplay - Hymn For The Weekend','Manali Trance  - The Shaukeens','Ott - Smoked Glass and Chrome','The Beatles - Strawberry Fields Forever','KSHMR & Marnik - Bazaar'];
 
 function preload() {
-
+var soundframe=0;
  timeschanged=5;
  audio.addEventListener('loadedmetadata', function(){  soundframe=0;songname.innerHTML=files[selectedindex];GEETA=grandmusic[selectedindex];}, false);
  changeSound();
