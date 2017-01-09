@@ -10,7 +10,7 @@ function preload() {
 soundframe=0;
  timeschanged=5;
  audio.addEventListener('loadedmetadata', function(){  soundframe=0;songname.innerHTML=files[selectedindex];GEETA=grandmusic[selectedindex];}, false);
- audio.addEventListener('ended',function(){	GEETA=[];changeSound();});
+ audio.addEventListener('ended',function(){	xaxa();GEETA=[];changeSound();});
  changeSound();
   
 }
@@ -264,6 +264,7 @@ function sumColor (str) {
 function keyPressed(v){
 	if(v.code=="Space"){
 		//Change the fuking song
+		xaxa();
 		GEETA=[];
 		changeSound();
 
