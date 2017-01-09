@@ -1,2 +1,2 @@
-# manali
-A psychedelic visualization. Work in progress
+# Psychedelia - सयिकेडिलीया  
+A psychedelic visualization.
