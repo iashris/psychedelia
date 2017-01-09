@@ -9,7 +9,7 @@ yola=['rgba(0,0,0,0.25)','rgba(0,0,0,0.15)','rgba(0,0,0,0.15)','rgba(0,0,0,0.1)'
 function preload() {
 
  timeschanged=5;
- audio.addEventListener('loadedmetadata', function(){console.log('hiiii')}, false);
+ audio.addEventListener('loadedmetadata', function(){  soundframe=0;songname.innerHTML=files[selectedindex];GEETA=grandmusic[selectedindex];}, false);
  changeSound();
   
 }
@@ -18,7 +18,7 @@ function changeSound(){
 	if(!audio.paused){audio.pause();}
  timeschanged++;
  selectedindex=timeschanged%6;
- songname.innerHTML=files[selectedindex];
+ songname.innerHTML='Loading...';
   songkanaam=files[selectedindex]+'.mp3';
 source.src=songkanaam;
 audio.load();
@@ -27,7 +27,7 @@ audio.play();
 
 
   //instantiate variables
-  soundframe=0;GEETA=grandmusic[selectedindex];
+
 
 }
 
@@ -77,7 +77,7 @@ Square.prototype.update=function(){
 		
 	}
 	Spiral.prototype.reset=function(){
-		this.nums=parseInt(map(rms,1,1.6,2,14));
+		this.nums=parseInt(map(rms,1,1.6,0,14));
 		this.rotrate=parseInt(random(18));
 		this.outwardspeed=random(5,8);
 		this.w=random(1,15);
@@ -115,7 +115,7 @@ function Spiralnil(){
 		if(this.sep>width)this.reset();
 	}
 	Spiralnil.prototype.reset=function(){
-		this.nums=parseInt(map(rms,1,1.5,4,16));
+		this.nums=parseInt(map(rms,1,1.5,0,16));
 		this.rotrate=parseInt(random(18));
 		this.outwardspeed=random(6,12);
 		this.w=random(1,15);
@@ -195,7 +195,7 @@ function Spiralnil(){
 function draw(){
 if(frameCount%30==0){
 	soundframe++;
-	rms = (GEETA[soundframe%GEETA.length] || 1.2);
+	rms = (GEETA[soundframe%GEETA.length] || 1);
 	console.log(rms);
 }
 
@@ -261,6 +261,7 @@ function sumColor (str) {
 function keyPressed(v){
 	if(v.code=="Space"){
 		//Change the fuking song
+		GEETA=[];
 		changeSound();
 
 	}
