@@ -1,21 +1,37 @@
 
 rms=1;
+var audioRoot = document.getElementById('audio');
+var source = document.getElementById('mp3Source');
 
-	var song, analyzer;
 yola=['rgba(0,0,0,0.25)','rgba(0,0,0,0.15)','rgba(0,0,0,0.15)','rgba(0,0,0,0.1)','rgba(0,0,0,0.1)'];
+	files=['Nucleya - BASS Rani - Aaja','Coldplay - Hymn For The Weekend','Manali Trance  - The Shaukeens','Ott - Smoked Glass and Chrome','The Beatles - Strawberry Fields Forever','KSHMR & Marnik - Bazaar'];
+
 function preload() {
-	files=['Nucleya - BASS Rani - Aaja','Coldplay - Hymn For The Weekend','Manali Trance  - The Shaukeens','Ott - Smoked Glass and Chrome','The Beatles - Strawberry Fields Forever'];
 
-  selectedindex=parseInt(Math.random()*files.length);
-  song=loadSound(files[selectedindex]+'.mp3');
-    document.getElementById('p5_loading').innerHTML="कृपया पेज लोड होने कि प्रतीक्षा करें\nPlease wait for the page to load";
+ timeschanged=5;
+ changeSound();
+  
+}
+function changeSound(){
+	// selectedindex=parseInt(Math.random()*files.length);
+	if(!audio.paused){audio.pause();}
+ timeschanged++;
+ selectedindex=timeschanged%6;
+ songname.innerHTML=files[selectedindex];
+  songkanaam=files[selectedindex]+'.mp3';
+source.src=songkanaam;
+audio.load();
+audio.play();
+  //play music
 
-  songname.innerHTML=files[selectedindex];
+
+  //instantiate variables
+  soundframe=0;GEETA=grandmusic[selectedindex];
+
 }
 
+
 	var backa=255;
-
-
 	
 function Square(){
 	this.reset();
@@ -172,17 +188,15 @@ function Spiralnil(){
 			foo.push(new Spiral());
 			foo.push(new Square());
 }
-song.loop();
 
-  // create a new Amplitude analyzer
-  analyzer = new p5.Amplitude();
-
-  // Patch the input to an volume analyzer
-  analyzer.setInput(song);
 }
 
 function draw(){
-if(frameCount%30==0){rms = map(Math.pow(analyzer.getLevel(),0.7),0,1,1,2);console.log(parseInt(1000*rms)/1000);}
+if(frameCount%30==0){
+	soundframe++;
+	rms = (GEETA[soundframe%GEETA.length] || 1.2);
+	console.log(rms);
+}
 
 	background(backa);
 	if(frameCount%300<15){
@@ -243,7 +257,13 @@ function sumColor (str) {
   var rgb = str.replace(/[()]/g, "").split(",").map(Number);
   return 0.2126*rgb[0] + 0.7152*rgb[1] + 0.0722*rgb[2];
 }
+function keyPressed(v){
+	if(v.code=="Space"){
+		//Change the fuking song
+		changeSound();
 
+	}
+}
 
 function windowResized() {
 	resizeCanvas(windowWidth, windowHeight);

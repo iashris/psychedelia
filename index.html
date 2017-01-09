@@ -11,12 +11,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/addons/p5.sound.min.js"></script>
 <body>
 	<div id="content"></div>
-	<div id="instructions"><div id="songname">Some shit.</div></div>
-	<audio controls autoplay>
-  <source src="Nucleya - BASS Rani - Aaja.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
+	<div id="instructions"><div id="songname">Some shit.</div><h6 style="margin-top:9px">PRESS SPACE FOR NEXT SONG</h6></div>
+	<audio id="audio" loop="true">
+    <source id="mp3Source" src="" type="audio/mp3"></source>
+    Your browser does not support the audio format.
 </audio>
 </body>
+<script type="text/javascript" src="grandmusic.js"></script>
 <script type="text/javascript" src="colors.js"></script>
-<!-- <script type="text/javascript" src="main.js"></script> -->
+<script type="text/javascript" src="main.js"></script>
 </html>
