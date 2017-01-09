@@ -198,7 +198,6 @@ function draw(){
 if(frameCount%30==0){
 	soundframe++;
 	rms = (GEETA[soundframe%GEETA.length] || 1);
-	console.log(rms);
 }
 
 	background(backa);
@@ -240,7 +239,6 @@ var numcols=colarray.length;
 function yoo(){
 	var kkk=Math.floor(Math.random()*numcols);
 	var pickcolor=colarray[kkk];
-	console.log('picked ',pickcolor);
 	var convertedtorgbarray=pickcolor.map(function(v){return hexToRgb(v)});
 	var sortedpicked=convertedtorgbarray.sort(function (a, b) {
   return sumColor(a) > sumColor(b);
