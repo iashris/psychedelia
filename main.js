@@ -239,7 +239,7 @@ var numcols=colarray.length;
 function yoo(){
 	var kkk=Math.floor(Math.random()*numcols);
 	var pickcolor=colarray[kkk];
-	console('picked ',pickcolor);
+	console.log('picked ',pickcolor);
 	var convertedtorgbarray=pickcolor.map(function(v){return hexToRgb(v)});
 	var sortedpicked=convertedtorgbarray.sort(function (a, b) {
   return sumColor(a) > sumColor(b);
