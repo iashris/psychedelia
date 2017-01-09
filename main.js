@@ -4,9 +4,7 @@ rms=1;
 	var song, analyzer;
 yola=['rgba(0,0,0,0.25)','rgba(0,0,0,0.15)','rgba(0,0,0,0.15)','rgba(0,0,0,0.1)','rgba(0,0,0,0.1)'];
 function preload() {
-	files=['Nucleya - BASS Rani - Aaja','Coldplay - Hymn For The Weekend','Manali Trance  - The Shaukeens','Gold Panda - Quitters Raga','Ott - Smoked Glass and Chrome','The Beatles - Strawberry Fields Forever'];
- 
-
+	files=['Nucleya - BASS Rani - Aaja','Coldplay - Hymn For The Weekend','Manali Trance  - The Shaukeens','Ott - Smoked Glass and Chrome','The Beatles - Strawberry Fields Forever'];
 
   selectedindex=parseInt(Math.random()*files.length);
   song=loadSound(files[selectedindex]+'.mp3');
@@ -62,7 +60,7 @@ Square.prototype.update=function(){
 		
 	}
 	Spiral.prototype.reset=function(){
-		this.nums=constrain(parseInt(rms*random(5)),2,20);
+		this.nums=parseInt(map(rms,1,1.6,2,14));
 		this.rotrate=parseInt(random(18));
 		this.outwardspeed=random(5,8);
 		this.w=random(1,15);
@@ -100,7 +98,7 @@ function Spiralnil(){
 		if(this.sep>width)this.reset();
 	}
 	Spiralnil.prototype.reset=function(){
-		this.nums=constrain(parseInt(Math.pow(rms,1.2)*random(5,15)),4,20);
+		this.nums=parseInt(map(rms,1,1.5,4,16));
 		this.rotrate=parseInt(random(18));
 		this.outwardspeed=random(6,12);
 		this.w=random(1,15);
@@ -184,8 +182,7 @@ song.loop();
 }
 
 function draw(){
-
- rms = map(Math.pow(analyzer.getLevel(),0.7),0,1,1,2);
+if(frameCount%30==0){rms = map(Math.pow(analyzer.getLevel(),0.7),0,1,1,2);console.log(parseInt(1000*rms)/1000);}
 
 	background(backa);
 	if(frameCount%300<15){
@@ -225,7 +222,6 @@ backa=yola[4];
 var numcols=colarray.length;
 function yoo(){
 	var kkk=Math.floor(Math.random()*numcols);
-	console.log(kkk);
 	var pickcolor=colarray[kkk];
 	var convertedtorgbarray=pickcolor.map(function(v){return hexToRgb(v)});
 	var sortedpicked=convertedtorgbarray.sort(function (a, b) {
