@@ -10,6 +10,7 @@ function preload() {
 soundframe=0;
  timeschanged=5;
  audio.addEventListener('loadedmetadata', function(){  soundframe=0;songname.innerHTML=files[selectedindex];GEETA=grandmusic[selectedindex];}, false);
+ audio.addEventListener('ended',function(){	GEETA=[];changeSound();});
  changeSound();
   
 }
