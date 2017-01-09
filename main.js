@@ -9,6 +9,7 @@ yola=['rgba(0,0,0,0.25)','rgba(0,0,0,0.15)','rgba(0,0,0,0.15)','rgba(0,0,0,0.1)'
 function preload() {
 
  timeschanged=5;
+ audio.addEventListener('loadedmetadata', function(){console.log('hiiii')}, false);
  changeSound();
   
 }
