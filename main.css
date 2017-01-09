@@ -1,0 +1,46 @@
+	html,body{
+		overflow: hidden;
+	}
+	*{
+		padding:0;
+		margin: 0;
+	}
+	#content{
+		position: fixed;
+		top:0;
+		left:0;
+		z-index: -2;
+	}
+
+	#p5_loading{
+		font-family: 'Rozha One';
+		font-size: 1em;
+		text-align: center;
+		position: absolute;
+		top:48%;
+		left:42%;
+	}
+	.innercontents{
+		position: relative;
+		display: block;
+		vertical-align: middle;
+		margin: auto;
+		color:white;
+		font-family: 'Roboto',Helvetica;
+		text-align: center;
+		top:45%;
+		
+	}
+	#instructions{
+		z-index: 10;
+		color:white;
+		position: fixed;
+		bottom:20px;
+		opacity: 0.4;
+		text-align: center;
+		font-family: Roboto;
+		display: block;
+		width: 100%;
+		transition: visibility 1s,opacity 0.5s linear;
+
+	}
