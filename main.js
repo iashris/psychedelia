@@ -38,7 +38,7 @@ function Square(){
 	this.reset();
 }
 Square.prototype.reset=function(){
-	this.ang=
+	
 	this.size=random(100);
 	this.rotspeed=rms*random(4,18);
 }
@@ -58,7 +58,7 @@ Square.prototype.show=function(){
 Square.prototype.update=function(){
 	this.speed=this.size*rms/30;
 	this.size+=this.speed;
-	this.thickness=parseInt(rms*3);
+	this.thickness=rms==1?0:parseInt(rms*3);
 	this.color=yola[2];
 	if(this.size>width+200)this.reset();
 }
@@ -165,7 +165,8 @@ function Spiralnil(){
 	}
 	Arcify.prototype.update=function(){
 		this.radius+=this.radius/30;
-		this.thickness=rms*rms*this.radius/20;
+
+		this.thickness=rms==1?0:rms*rms*this.radius/20;
 		if(this.radius>100+width)this.reset();
 		this.color=yola[0];
 		
