@@ -5,17 +5,13 @@ rms=1;
 yola=['rgba(0,0,0,0.25)','rgba(0,0,0,0.15)','rgba(0,0,0,0.15)','rgba(0,0,0,0.1)','rgba(0,0,0,0.1)'];
 function preload() {
 	files=['Nucleya - BASS Rani - Aaja','Coldplay - Hymn For The Weekend','Manali Trance  - The Shaukeens','Gold Panda - Quitters Raga','Ott - Smoked Glass and Chrome','The Beatles - Strawberry Fields Forever'];
-  songs = [];
-  songs[0]=loadSound(files[0]+'.mp3');
-  songs[1]=loadSound(files[1]+'.mp3');
-  songs[2]=loadSound(files[2]+'.mp3');
-  songs[3]=loadSound(files[3]+'.mp3');
-  songs[4]=loadSound(files[4]+'.mp3');
-  songs[5]=loadSound(files[5]+'.mp3');
-  document.getElementById('p5_loading').innerHTML="कृपया पेज लोड होने कि प्रतीक्षा करें";
+ 
 
-  selectedindex=0;
-  song=songs[selectedindex];
+
+  selectedindex=parseInt(Math.random()*files.length);
+  song=loadSound(files[selectedindex]+'.mp3');
+    document.getElementById('p5_loading').innerHTML="कृपया पेज लोड होने कि प्रतीक्षा करें\nPlease wait for the page to load";
+
   songname.innerHTML=files[selectedindex];
 }
 
@@ -256,24 +252,4 @@ function sumColor (str) {
 function windowResized() {
 	resizeCanvas(windowWidth, windowHeight);
 }
-spacepressed=0;
-function keyPressed(v){
-	if(v.code=="Space"){
-		spacepressed++;
-	selectedindex=spacepressed%files.length;
-	songname.innerHTML=files[selectedindex];
-	song.stop();
-	song=songs[selectedindex];
-	console.log(selectedindex);
-	console.log('sesg');
-	song.loop();
 
-  // create a new Amplitude analyzer
-  analyzer = new p5.Amplitude();
-
-  // Patch the input to an volume analyzer
-  analyzer.setInput(song);
-  xaxa();
-  return;
-}
-}
