@@ -9,7 +9,7 @@ yola=['rgba(0,0,0,0.25)','rgba(0,0,0,0.15)','rgba(0,0,0,0.15)','rgba(0,0,0,0.1)'
 function preload() {
 soundframe=0;GEETA=[];
  timeschanged=5;
- audio.addEventListener('loadedmetadata', function(){  soundframe=0;songname.innerHTML=files[selectedindex];GEETA=grandmusic[selectedindex];}, false);
+ audio.addEventListener('loadedmetadata', function(){  soundframe=0;songname.innerHTML=files[selectedindex];GEETA=grandmusic[selectedindex];audio.play();}, false);
  audio.addEventListener('ended',function(){	xaxa();GEETA=[];changeSound();});
  changeSound();
   
@@ -23,7 +23,7 @@ function changeSound(){
   songkanaam=files[selectedindex]+'.mp3';
 source.src=songkanaam;
 audio.load();
-audio.play();
+
   //play music
 
 
@@ -161,9 +161,15 @@ function Spiralnil(){
 		noFill();
 		stroke(this.color);
 		strokeWeight(this.thickness);
+		if(rms>1.3){
+		ellipse(random(-5,5),random(-5,5),this.radius,this.radius);
+	}
+	else{
 		ellipse(0,0,this.radius,this.radius);
+	}
 		pop();
 	}
+	
 	Arcify.prototype.update=function(){
 		this.radius+=this.radius/30;
 
@@ -195,9 +201,11 @@ function Spiralnil(){
 }
 
 function draw(){
+
 if(frameCount%30==0){
-	soundframe++;
 	rms = (GEETA[soundframe%GEETA.length] || 1);
+	soundframe++;
+
 }
 
 	background(backa);
@@ -260,12 +268,16 @@ function sumColor (str) {
   return 0.2126*rgb[0] + 0.7152*rgb[1] + 0.0722*rgb[2];
 }
 function keyPressed(v){
-	if(v.code=="Space"){
+
+	if(v.code=="Space" || v.keyCode==32){
 		//Change the fuking song
 		xaxa();
 		GEETA=[];
 		changeSound();
 
+	}
+	if(v.code=="KeyM" || v.keyCode==77){
+		audio.muted=!audio.muted;
 	}
 }
 
