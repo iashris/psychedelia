@@ -1,45 +1,27 @@
-
+//use this for analysis on local file
 rms=1;
-var audioRoot = document.getElementById('audio');
-var source = document.getElementById('mp3Source');
 
+	var song, analyzer;
 yola=['rgba(0,0,0,0.25)','rgba(0,0,0,0.15)','rgba(0,0,0,0.15)','rgba(0,0,0,0.1)','rgba(0,0,0,0.1)'];
+function preload() {
 	files=['Nucleya - BASS Rani - Aaja','Coldplay - Hymn For The Weekend','Manali Trance  - The Shaukeens','Ott - Smoked Glass and Chrome','The Beatles - Strawberry Fields Forever','KSHMR & Marnik - Bazaar','Jai Wolf - Indian Summer'];
 
-function preload() {
-soundframe=0;GEETA=[];
- timeschanged=5;
- audio.addEventListener('loadedmetadata', function(){  soundframe=0;songname.innerHTML=files[selectedindex];GEETA=grandmusic[selectedindex];audio.play();}, false);
- audio.addEventListener('ended',function(){	xaxa();GEETA=[];changeSound();});
- changeSound();
-  
+  selectedindex=files.length-1;
+  song=loadSound(files[selectedindex]+'.mp3');
+    document.getElementById('p5_loading').innerHTML="कृपया पेज लोड होने कि प्रतीक्षा करें\nPlease wait for the page to load";
+
+  songname.innerHTML=files[selectedindex];
 }
-function changeSound(){
-	// selectedindex=parseInt(Math.random()*files.length);
-	if(!audio.paused){audio.pause();}
- timeschanged++;
- selectedindex=timeschanged%7;
- songname.innerHTML='Loading...';
-  songkanaam=files[selectedindex]+'.mp3';
-source.src=songkanaam;
-audio.load();
-
-  //play music
-
-
-  //instantiate variables
-
-
-}
-
 
 	var backa=255;
+
+
 	
 function Square(){
 	this.reset();
 }
 Square.prototype.reset=function(){
-	
+	this.ang=
 	this.size=random(100);
 	this.rotspeed=rms*random(4,18);
 }
@@ -59,7 +41,7 @@ Square.prototype.show=function(){
 Square.prototype.update=function(){
 	this.speed=this.size*rms/30;
 	this.size+=this.speed;
-	this.thickness=rms==1?0:parseInt(rms*3);
+	this.thickness=parseInt(rms*3);
 	this.color=yola[2];
 	if(this.size>width+200)this.reset();
 }
@@ -78,7 +60,7 @@ Square.prototype.update=function(){
 		
 	}
 	Spiral.prototype.reset=function(){
-		this.nums=parseInt(map(rms,1,1.6,0,14));
+		this.nums=parseInt(map(rms,1,1.6,2,14));
 		this.rotrate=parseInt(random(18));
 		this.outwardspeed=random(5,8);
 		this.w=random(1,15);
@@ -116,7 +98,7 @@ function Spiralnil(){
 		if(this.sep>width)this.reset();
 	}
 	Spiralnil.prototype.reset=function(){
-		this.nums=parseInt(map(rms,1,1.5,0,16));
+		this.nums=parseInt(map(rms,1,1.5,4,16));
 		this.rotrate=parseInt(random(18));
 		this.outwardspeed=random(6,12);
 		this.w=random(1,15);
@@ -161,19 +143,12 @@ function Spiralnil(){
 		noFill();
 		stroke(this.color);
 		strokeWeight(this.thickness);
-		if(rms>1.3){
-		ellipse(random(-5,5),random(-5,5),this.radius,this.radius);
-	}
-	else{
 		ellipse(0,0,this.radius,this.radius);
-	}
 		pop();
 	}
-	
 	Arcify.prototype.update=function(){
 		this.radius+=this.radius/30;
-
-		this.thickness=rms==1?0:rms*rms*this.radius/20;
+		this.thickness=rms*rms*this.radius/20;
 		if(this.radius>100+width)this.reset();
 		this.color=yola[0];
 		
@@ -197,16 +172,17 @@ function Spiralnil(){
 			foo.push(new Spiral());
 			foo.push(new Square());
 }
+song.loop();
 
+  // create a new Amplitude analyzer
+  analyzer = new p5.Amplitude();
+
+  // Patch the input to an volume analyzer
+  analyzer.setInput(song);
 }
 
 function draw(){
-
-if(frameCount%30==0){
-	rms = (GEETA[soundframe%GEETA.length] || 1);
-	soundframe++;
-
-}
+if(frameCount%30==0){rms = map(Math.pow(analyzer.getLevel(),0.7),0,1,1,2);console.log(parseInt(1000*rms)/1000);}
 
 	background(backa);
 	if(frameCount%300<15){
@@ -252,7 +228,7 @@ function yoo(){
   return sumColor(a) > sumColor(b);
 }).reverse();
 	var processed=sortedpicked.map(function(v){
-		return 'rgba'+v.substring(0, v.length-1)+',0.75)';
+		return 'rgba'+v.substring(0, v.length-1)+',0.5)';
 	});
 return processed;
 	
@@ -267,21 +243,8 @@ function sumColor (str) {
   var rgb = str.replace(/[()]/g, "").split(",").map(Number);
   return 0.2126*rgb[0] + 0.7152*rgb[1] + 0.0722*rgb[2];
 }
-function keyPressed(v){
 
-	if(v.code=="Space" || v.keyCode==32){
-		//Change the fuking song
-		xaxa();
-		GEETA=[];
-		changeSound();
-
-	}
-	if(v.code=="KeyM" || v.keyCode==77){
-		audio.muted=!audio.muted;
-	}
-}
 
 function windowResized() {
 	resizeCanvas(windowWidth, windowHeight);
 }
-
