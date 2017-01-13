@@ -8,11 +8,28 @@ yola=['rgba(0,0,0,0.25)','rgba(0,0,0,0.15)','rgba(0,0,0,0.15)','rgba(0,0,0,0.1)'
 
 function preload() {
 soundframe=0;GEETA=[];
- timeschanged=5;
+ timeschanged=5;instruc=1;
+ dikhao=true;
  audio.addEventListener('loadedmetadata', function(){  soundframe=0;songname.innerHTML=files[selectedindex];GEETA=grandmusic[selectedindex];audio.play();}, false);
  audio.addEventListener('ended',function(){	xaxa();GEETA=[];changeSound();});
- changeSound();
-  
+mobila=false;
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+ instruc=2; mobila=true;
+}
+else{
+	document.getElementById('controlbuttons').style.display="none";
+	 changeSound();
+}
+}
+function mobilaclick(){
+	mobila=false;
+	changeSound();
+	latexta.innerHTML="NEXT";
+	dikhao=false;
+	xaxa();
+	document.getElementById('instructions').style.fontSize="2.8em";
+	ins.innerHTML="";
+	document.getElementById('controlbuttons').style.color="white";
 }
 function changeSound(){
 	// selectedindex=parseInt(Math.random()*files.length);
@@ -215,14 +232,14 @@ if(frameCount%30==0){
 	else{
 		var fd=random(7);
 	}
-	if(frameCount%500==0)xaxa();
+	if(frameCount%500==0 && mobila==false)xaxa();
 	
 
 	foo.forEach(function(v){
 		v.update();
 		v.show();
 	})
-if(frameCount<500){
+if((frameCount<500 || mobila==true) && dikhao==true){
 	textSize(160);textFont("Rozha One");
  fill('rgba(42,186,217,0.8)');
  text('सयिकेडिलीया', width/2-fd, height/2+30);
@@ -231,10 +248,10 @@ if(frameCount<500){
 
   fill('rgba(0,0,0,0.8)');
  text('सयिकेडिलीया', width/2, height/2+30);
-textSize(14);textFont("Roboto");
- text('Please ensure speakers are on. For best experience, use earphones.',width/2,height-100);
- textSize(12);
-  text('</iआश्रिश>',width/2,height-80);
+textSize(14*instruc);textFont("Roboto");
+ text('Please ensure speakers are on. For best experience, use earphones.',width/2,height-90-instruc*20);
+ textSize(12*instruc);
+  text('</iआश्रिश>',width/2,height-80-instruc*8);
 }
 }
 

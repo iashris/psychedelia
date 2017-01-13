@@ -2,6 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+
 	<meta content="author_name" description="iashris">
 	<meta property="og:image" content="http://iashris.com/psychedelia/thumbnail.png" /> 
 	<title>Psychedelia</title>
@@ -20,7 +21,8 @@
   ga('send', 'pageview');
 </script>
 	<div id="content"></div>
-	<div id="instructions"><div id="songname">Some shit.</div><h6 style="margin-top:9px">PRESS SPACE FOR NEXT SONG AND M FOR MUTE/RESUME</h6></div>
+  <div id="controlbuttons" onclick="mobilaclick();">&#9658;<span id="latexta">PLAY</span></div>
+	<div id="instructions"><div id="songname">Some shit.</div><h6 id="ins" style="margin-top:9px">PRESS SPACE FOR NEXT SONG AND M FOR MUTE/RESUME</h6></div>
 	<audio id="audio">
     <source id="mp3Source" src="" type="audio/mp3"></source>
     Your browser does not support the audio format.

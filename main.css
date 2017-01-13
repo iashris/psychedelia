@@ -44,3 +44,20 @@
 		transition: visibility 1s,opacity 0.5s linear;
 
 	}
+	#controlbuttons{
+		z-index: 10;
+		color:black;
+		position: fixed;
+		bottom:10%;
+		font-size: 4em;
+		opacity: 0.4;
+		text-align: center;
+		font-family: Roboto;
+		display: inline-block;
+		width: 100%;
+
+	}
+	#controlbuttons>span{
+		font-size: 3.4rem;
+		
+	}
